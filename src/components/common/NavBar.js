@@ -1,5 +1,6 @@
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import React from 'react'
+
 import { isAuthorized, remove } from '../../lib/auth'
 
 function NavBar() {
@@ -21,14 +22,14 @@ function NavBar() {
   }, [location.pathname])
 
   return (
-    <nav className='navbar navbar-style'>
-      <div className='container'>
-        <div className='navbar-brand'> 
-          <Link to = '/' className='navbar-item has-text-light'>
+    <nav className="navbar navbar-style">
+      <div className="container">
+        <div className="navbar-brand"> 
+          <Link to = '/' className="navbar-item has-text-light main-buttons">
             Home
           </Link>
-          <Link to="/places/map" className="navbar-item has-text-light" href='/'>
-           Map
+          <Link to="/places/map" className="navbar-item has-text-light ml-3 main-buttons" href='/'>
+          Map
           </Link>
           <span
             className={`navbar-burger ${isOpen ? 'is-active' : ''}`}
@@ -46,10 +47,10 @@ function NavBar() {
             className="navbar-end ">
             <div className="navbar-item">
               <div className="navbar-item">
-                {isLoggedIn && <div className='navbar-item'><Link to ='/places/new' className=" has-text-light">
+                {isLoggedIn && <div className="navbar-item main-buttons"><Link to ='/places/new' className=" has-text-light">
                   Submit a place
                 </Link></div>}
-                {isLoggedIn && <div className='navbar-item'><Link to ='/favorites' className="has-text-light">
+                {isLoggedIn && <div className="navbar-item main-buttons"><Link to ='/favorites' className="has-text-light">
                   My Favourites
                 </Link></div>}
                 {!isLoggedIn &&  
@@ -57,9 +58,9 @@ function NavBar() {
                 
                 }
                 {!isLoggedIn ?
-                  <button className="navbar-item button button-nav"><Link to = '/login' className=' link-nav' href='/'>Log In</Link> </button>
+                  <button className="navbar-item button button-nav ml-3"><Link to = '/login' className="link-nav" href='/'>Log In</Link> </button>
                   :
-                  <button className='button button-nav' onClick= {handleLogout}>
+                  <button className="button button-nav" onClick= {handleLogout}>
                   Log out</button>
                 }
               </div>

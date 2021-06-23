@@ -20,7 +20,6 @@ function getPayLoad() {
 
 export function isAuthorized() {
   const payload = getPayLoad()
-  console.log(payload)
   if (!payload) return false
   const now = Math.round(Date.now() / 1000)
   return now < payload.exp

@@ -1,4 +1,5 @@
 function ReviewList({ text, image, userName, rating }) {
+  
   return (
     <div className="card mb-5 show-page" >
       <div className="card-content texts">
@@ -6,7 +7,9 @@ function ReviewList({ text, image, userName, rating }) {
       </div>
 
       <div className="card-content texts">
-        <p className="title is-5">Rating: {' ★ '.repeat(rating)}</p>
+        <p className="title is-5">
+          Rating: {' ★ '.repeat(rating)}
+        </p>
       </div>
 
       { image ? (

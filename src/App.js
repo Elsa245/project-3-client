@@ -18,23 +18,21 @@ import ReviewNew from './components/reviews/ReviewNew'
 
 function App() {
 
-
   return (
     <>
       <BrowserRouter>
         <Header />
         <NavBar /> 
         <Switch>
-          <Route exact path='/' component={ Home } />
-          <Route path = '/register' component ={Register}/>
-          <Route path='/login' component={Login}/>
-          {/* <Route exact path='/map' component={PlaceMap} /> */}
-          <Route path="/places/new" component={PlaceNew} />
-          <Route path="/places/map" component={PlaceMap} />
-          <Route path="/places/:placeId/edit" component={PlaceEdit} />
-          <Route path="/places/:placeId/review" component={ReviewNew} />
-          <Route path="/places/:placeId" component={PlaceShow} />
-          <Route path="/favorites" component={MyFav} />
+          <Route exact path='/' component={Home} />
+          <Route path = '/register' component ={Register} />
+          <Route path='/login' component={Login} />
+          <Route path='/places/new' component={PlaceNew} />
+          <Route path='/places/map' component={PlaceMap} />
+          <Route path='/places/:placeId/edit' component={PlaceEdit} />
+          <Route path='/places/:placeId/review' component={ReviewNew} />
+          <Route path='/places/:placeId' component={PlaceShow} />
+          <Route path='/favorites' component={MyFav} />
         </Switch>
         <Footer />
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router'
+
 import  { useForm }  from '../../hooks/useForm'
 import { createPlace } from '../../lib/api'
 import { getCordinates } from '../../lib/api'
@@ -38,7 +39,6 @@ function CreateNewPlace() {
         region: postCodeResult.region,
         district: postCodeResult.admin_district,
       }
-      console.log('this is it', newFormData)
 
       const res = await createPlace( newFormData )
 
@@ -50,20 +50,18 @@ function CreateNewPlace() {
 
   }
 
-
-  console.log(formData)
   return (
-    <section className='section'>
-      <div className='container'>
-        <div className='title has-text-centered'>
-          <h2 className='title-form'>Add a new place to the map:</h2>
+    <section className="section">
+      <div className="container">
+        <div className="title has-text-centered">
+          <h2 className="title-form">Add a new place to the map:</h2>
         </div>
-        <div className='columns'>
-          <div className='forms column is-half is-offset-one-quarter box'>
+        <div className="columns">
+          <div className="forms column is-half is-offset-one-quarter box">
             <form onSubmit={handleSubmit}>
-              <div className='field'>
-                <label className='label labels'>Name*</label>
-                <div className='control'>
+              <div className="field">
+                <label className="label labels">Name*</label>
+                <div className="control">
                   <input
                     className={`input ${formErrors.name ?
                       'is-danger' : '' }`}
@@ -72,13 +70,13 @@ function CreateNewPlace() {
                     onChange={handleChange}
                   />
                 </div>
-                {formErrors.name && <p className='help is-danger'>
+                {formErrors.name && <p className="help is-danger">
                   {formErrors.name}
                 </p>}
               </div>
-              <div className='field'>
-                <label className='label labels'>Description*</label>
-                <div className='control'>
+              <div className="field">
+                <label className="label labels">Description*</label>
+                <div className="control">
                   <input
                     className={`textarea ${formErrors.description ?
                       'is-danger' : '' }`}
@@ -87,13 +85,13 @@ function CreateNewPlace() {
                     onChange={handleChange}
                   />
                 </div>
-                {formErrors.description && <p className='help is-danger'>
+                {formErrors.description && <p className="help is-danger">
                   {formErrors.description}
                 </p>}
               </div>
-              <div className='field'>
-                <label className='label labels'>Rating*</label>
-                <div className='control'>
+              <div className="field">
+                <label className="label labels">Rating*</label>
+                <div className="control">
                   <input
                     className={`input ${formErrors.rating ?
                       'is-danger' : '' }`}
@@ -102,13 +100,13 @@ function CreateNewPlace() {
                     onChange={handleChange}
                   />
                 </div>
-                {formErrors.rating && <p className='help is-danger'>
+                {formErrors.rating && <p className="help is-danger">
                   {formErrors.rating}
                 </p>}
               </div>
-              <div className='field'>
-                <label className='label labels'>Address*</label>
-                <div className='control'>
+              <div className="field">
+                <label className="label labels">Address*</label>
+                <div className="control">
                   <input
                     className={`input ${formErrors.address ?
                       'is-danger' : '' }`}
@@ -117,13 +115,13 @@ function CreateNewPlace() {
                     onChange={handleChange}
                   />
                 </div>
-                {formErrors.address && <p className='help is-danger'>
+                {formErrors.address && <p className="help is-danger">
                   {formErrors.address}
                 </p>}
               </div>
-              <div className='field'>
-                <label className='label labels'>Postcode*</label>
-                <div className='control'>
+              <div className="field">
+                <label className="label labels">Postcode*</label>
+                <div className="control">
                   <input
                     className={`input ${formErrors.postcode ?
                       'is-danger' : '' }`}
@@ -132,13 +130,13 @@ function CreateNewPlace() {
                     onChange={handleChange}
                   />
                 </div>
-                {formErrors.postcode && <p className='help is-danger'>
+                {formErrors.postcode && <p className="help is-danger">
                   {formErrors.postcode}
                 </p>}
               </div>
-              <div className='field'>
-                <label className='label labels'>Image*</label>
-                <div className='control'>
+              <div className="field">
+                <label className="label labels">Image*</label>
+                <div className="control">
                   <input
                     className={`input ${formErrors.image ?
                       'is-danger' : '' }`}
@@ -147,13 +145,16 @@ function CreateNewPlace() {
                     onChange={handleChange}
                   />
                 </div>
-                {formErrors.image && <p className='help is-danger'>
+                {formErrors.image && <p className="help is-danger">
                   {formErrors.image}
                 </p>}
               </div>
 
-              <div className='field'>
-                <button type='submit' className='button-submit button is-success is-fullwidth'>
+              <div className="field">
+                <button 
+                  type='submit' 
+                  className="button-submit button is-success is-fullwidth"
+                >
                   Submit your place!
                 </button>
               </div>

@@ -10,7 +10,7 @@ function Home() {
   const [ searchTerm, setSearchTerm ] = React.useState('')
   const [ searchedPlaces, setSearchedPlaces ] = React.useState([])
   const [ searched, setSearched ] = React.useState(false)
-  const [ loading, setLoading ] = React.useState(false)
+  const [ loading, setLoading ] = React.useState(true)
 
   React.useEffect(() => {
     const getData = async () => {
@@ -20,7 +20,6 @@ function Home() {
         setBestPlaces(res.data)
         
       } catch (err) {
-        {<p>Something went wrong!</p>}
         console.log(err)
       } finally {
         setLoading(false)
@@ -84,13 +83,13 @@ function Home() {
       <section className="hero is-medium searchbar-section mx-5 my-5">
         <div className="hero-body">
           <div className="has-text-centered">
-            <input onChange={handleInput} type="text" placeholder="Search a place by name, address, postcode or area " className="input is-medium is-rounded search-input"></input>
+            <input onChange={handleInput} type="text" placeholder="Search a place by name, address, postcode or area" className="input is-medium is-rounded search-input"></input>
             
             <button onClick={handleSearch} className="button is-rounded">Search!</button>
             
           </div>
         </div>
-       
+
         {searchedPlaces ? searchedPlaces.map(result => {
           return (
             <>
@@ -106,8 +105,8 @@ function Home() {
                       </figure>
                     </div>
                     <div className="card-content">
-                      <p className='texts'>{result.area}</p>
-                      <p>{' ★ '.repeat(result.rating)}</p>
+                      <p className="texts">{result.area}</p>
+                      <p className="texts">{' ★ '.repeat(result.rating)}</p>
                     </div>
                   </div>
                 
@@ -131,7 +130,7 @@ function Home() {
       <section className="section">
         <div className="container">
           <div>
-            <div className="title has-text-centered fav-title">Five ★ places:</div>
+            <div className="title has-text-centered fav-title mb-6">Five ★ places:</div>
           </div>
 
           <div className="columns is-multiline">
@@ -145,13 +144,13 @@ function Home() {
                         <div className="card-header-title titles">{place.name}</div>
                       </div>
                       <div className="card-image">
-                        <figure className="image image-is-1by1">
+                        <figure className="image image-is-1by1 img-size">
                           <img src={place.image} alt={place.name} />
                         </figure>
                       </div>
                       <div className="card-content">
-                        <p className='texts'>{place.area}</p>
-                        <p>{' ★ '.repeat(place.rating)}</p>
+                        <p className="texts">{place.area}</p>
+                        <p className="texts mt-3">Rating: {' ★ '.repeat(place.rating)}</p>
                       </div>
                     </div>
                   </Link>

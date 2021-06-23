@@ -1,4 +1,5 @@
 function Footer() {
+  
   return (
     <div className="hero navbar-style is-small has-text-centered">
       <div className="hero-foot">

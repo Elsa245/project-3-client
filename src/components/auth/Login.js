@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router'
+import { useHistory } from 'react-router-dom'
 
 import { setToken } from '../../lib/auth'
 import { useForm } from '../../hooks/useForm'
@@ -21,7 +21,7 @@ function Login(){
       const res = await axios.post('/api/login', formData)
       console.log(res)
       setToken(res.data.token)
-      history.push('/flights')
+      history.push('/places/map')
     } catch (err) {
       console.log(err.response)
       setIsError(true)
@@ -49,7 +49,7 @@ function Login(){
                   onChange={handleChange}
                   onFocus={handleFocus}
               
-                />
+                /> 
               </div>
             
             </div>
@@ -65,7 +65,7 @@ function Login(){
                   onChange={handleChange}
                 />
               </div>
-              {isError && <small className='help is-danger'>Your credentials are incorrect</small>}
+              {isError && <small className="help is-danger">Your credentials are incorrect</small>}
             </div>
             <div className="field">
               <button type="submit" className="button-submit button is-fullwidth is-black">

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
+
 import {
   getSinglePlace,
   deletePlace,
@@ -49,7 +50,6 @@ function PlaceShow() {
         }
       } catch (err) {
         setIsError(true)
-        //return <p>error</p>
       }
     }
     getData()
@@ -69,7 +69,7 @@ function PlaceShow() {
     await removeFav(place._id)
     setIsFav(false)
   }
-  console.log(isLoggedIn)
+
   return (
     <>
       <section className="section">
@@ -77,7 +77,7 @@ function PlaceShow() {
           {isError && <Error />}
           {isLoading && <p>...loading</p>}
           {place && (
-            <div className='show-page'>
+            <div className="show-page">
               <h2 className="title titles has-text-centered">{place.name}</h2>
               <hr />
               <div className="columns">
@@ -91,14 +91,14 @@ function PlaceShow() {
                     
                     Description
                   </h4>
-                  <p className='texts'>{place.description}</p>
+                  <p className="texts">{place.description}</p>
                   <hr />
                   <h4 className="title titles is-4">
                     
                     Address
                   </h4>
                   
-                  <p className='texts'>
+                  <p className="texts">
                     {place.address}, {place.postcode}, {place.district},{' '}
                     {place.region}
                   </p>
@@ -107,7 +107,7 @@ function PlaceShow() {
                     Rating
                   </h6>
                   
-                  <p>{' ★ '.repeat(place.rating)}</p>
+                  <p className="texts">{' ★ '.repeat(place.rating)}</p>
                   <hr />
                   <h6 className="title titles is-5">
                     
@@ -170,9 +170,12 @@ function PlaceShow() {
                 <div className="container mb-3">
                   <div className="title has-text-centered titles">Reviews:</div>
                 </div>
-                {(reviews < 1) && <p className="title is-6 texts has-text-centered">No reviews yet. Add yours if you visited this place!</p>}
-
-
+                {
+                  (reviews < 1) 
+                  && <p className="title is-6 texts has-text-centered">
+                  No reviews yet. Add yours if you visited this place!
+                  </p>
+                }
                 <div className="columns is-multiline">
                   <div className="column is-one-quarter-desktop is-one-third-tablet">
                     {reviews.map(review => <ReviewsList key={review._id} {...review} />)}

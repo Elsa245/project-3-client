@@ -41,14 +41,28 @@ function Map() {
         height="100vh"
         onViewportChange={nextViewport => setViewport(nextViewport)}
         mapStyle='mapbox://styles/elsa24/ckpbnh5s2188u17mudjxkfwww'
-        mapboxApiAccessToken={'pk.eyJ1IjoiZWxzYTI0IiwiYSI6ImNrcGJuaDJocjA5NTQycXJ0bDI0ZWJiZnoifQ.keu_rAoCALBw47nBeWBPKA'} >
+        mapboxApiAccessToken={
+          'pk.eyJ1IjoiZWxzYTI0IiwiYSI6ImNrcGJuaDJocjA5NTQycXJ0bDI0ZWJiZnoifQ.keu_rAoCALBw47nBeWBPKA'
+        }
+      >
         {places.map(place => (
-          <div className='map' key={place._id}>
+          <div className="map" key={place._id}>
             <Marker longitude={place.long} latitude={place.lat}>
               <Link to={`/places/${place._id}`}>
                 <div>
-                  <button className='pins' value={place._id} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}> 📍 </button>
-                  {inHover === place._id && <><p className='pin-hover name'>{place.name}</p><small className='info'>Click the pin to see more info...</small></>}
+                  <button 
+                    className="pins" 
+                    value={place._id} 
+                    onMouseEnter={handleMouseEnter} 
+                    onMouseLeave={handleMouseLeave}
+                  > 
+                  📍 
+                  </button>
+                  {
+                    inHover === place._id 
+                    && <> <p className="pin-hover name">{place.name}</p>
+                      <small className="info">Click the pin to see more info...</small> </>
+                  }
                 </div>
               </Link>
             </Marker>

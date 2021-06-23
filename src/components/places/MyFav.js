@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 import { showMyFavs } from '../../lib/api'
 
 function MyFav() {
@@ -38,8 +39,8 @@ function MyFav() {
                       </figure>
                     </div>
                     <div className="card-content">
-                      <p className='texts'>{place.area}</p>
-                      <p>{' ★ '.repeat(place.rating)}</p>
+                      <p className="texts">{place.area}</p>
+                      <p className="texts">{' ★ '.repeat(place.rating)}</p>
                     </div>
                   </div>
                 </Link>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+
 import  { useForm }  from '../../hooks/useForm'
 import { createReview, getSinglePlace } from '../../lib/api'
-//import { Link } from 'react-router-dom'
+
 
 
 function CreateNewReview() {
@@ -22,14 +23,9 @@ function CreateNewReview() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        console.log('insideUseEffect')
-        const res = await getSinglePlace(placeId)
-        console.log(res, placeId, 'get single place Id')
+        await getSinglePlace(placeId)
       } catch (error) {
-        if (error.response) {
-          alert(error.response.data.message)
-          setFormErrors(error.response.data.message)
-        }
+        console.log(error)
       }
     } 
     getData()
@@ -37,52 +33,50 @@ function CreateNewReview() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
     
     try {
-
       const res = await createReview(formData, placeId)
       console.log(res)
       history.push(`/places/${placeId}`)
       
     } catch (error) {
       alert(error.response.data.message)
+      console.log(error)
       setFormErrors(error.response.data.message)
     }
-  
   }
   
-  console.log(placeId, 'placeId')
+  
 
   return (
-    <section className='section'>
-      <div className='container'>
-        <div className='title has-text-centered'>
-          <h2 className='title-form'>Write a review:</h2>
+    <section className="section">
+      <div className="container">
+        <div className="title has-text-centered">
+          <h2 className="title-form">Write a review:</h2>
         </div>
-        <div className='columns'>
+        <div className="columns">
           <form 
-            className='forms column is-half is-offset-one-quarter box'
+            className="forms column is-half is-offset-one-quarter box"
             onSubmit={handleSubmit}
           >
-            <div className='field'>
-              <label className='label labels'>Username*</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label labels">Username*</label>
+              <div className="control">
                 <input 
-                  className={`input ${formErrors.userName ? 
+                  className={`input ${formErrors.username ? 
                     'is-danger' : '' }`}
                   placeholder='Username'
                   name='userName'
                   onChange={handleChange}
                 />
               </div>
-              {formErrors.userName && <p className='help is-danger'>
-                {formErrors.userName}
-              </p>}
+              {/* {formErrors.username && <small className="help is-danger">
+                {formErrors.username}
+              </small>} */}
             </div>
-            <div className='field'>
-              <label className='label labels'>Review*</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label labels">Review*</label>
+              <div className="control">
                 <input
                   className={`textarea ${formErrors.text ?
                     'is-danger' : '' }`}
@@ -91,14 +85,14 @@ function CreateNewReview() {
                   onChange={handleChange}
                 />
               </div>
-              {formErrors.text && <p className='help is-danger'>
+              {/* {formErrors.text && <p className="help is-danger">
                 {formErrors.text}
-              </p>}
+              </p>} */}
             </div>
             
-            <div className='field'>
-              <label className='label labels'>Rating*</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label labels">Rating*</label>
+              <div className="control">
                 <input 
                   className={`input ${formErrors.rating ? 
                     'is-danger' : '' }`}
@@ -107,13 +101,13 @@ function CreateNewReview() {
                   onChange={handleChange}
                 />
               </div>
-              {formErrors.userName && <p className='help is-danger'>
+              {/* {formErrors.userName && <p className="help is-danger">
                 {formErrors.userName}
-              </p>}
+              </p>} */}
             </div>
-            <div className='field'>
-              <label className='label labels'>Image</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label labels">Image</label>
+              <div className="control">
                 <input 
                   className={`input ${formErrors.image ? 
                     'is-danger' : '' }`}
@@ -122,12 +116,12 @@ function CreateNewReview() {
                   onChange={handleChange}
                 />
               </div>
-              {formErrors.image && <p className='help is-danger'>
+              {/* {formErrors.image && <p className="help is-danger">
                 {formErrors.image}
-              </p>}
+              </p>} */}
             </div>
-            <div className='field'>
-              <button type='submit' className='button-submit button is-success is-fullwidth'>
+            <div className="field">
+              <button type='submit' className="button-submit button is-success is-fullwidth">
                   Post your review!
               </button> 
             </div>

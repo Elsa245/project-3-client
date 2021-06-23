@@ -1,5 +1,6 @@
 import React from 'react'
 import { useParams, useHistory } from 'react-router-dom'
+
 import useForm from '../../hooks/useForm'
 import { getSinglePlace, editPlace } from '../../lib/api'
 
@@ -50,16 +51,16 @@ function PlaceEdit() {
   console.log(formData)
 
   return (
-    <section className='section'>
-      <div className='container'>
-        <div className='columns'>
+    <section className="section">
+      <div className="container">
+        <div className="columns">
           <form 
-            className='column is-half is-offset-one-quarter box'
+            className="column is-half is-offset-one-quarter box"
             onSubmit={handleSubmit}
           >
-            <div className='field'>
-              <label className='label'>Name</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label">Name*</label>
+              <div className="control">
                 <input
                   className={`input ${formErrors.name ?
                     'is-danger' : '' }`}
@@ -69,79 +70,15 @@ function PlaceEdit() {
                   value={formData.name}
                 />
               </div>
-              {formErrors.name && <p className='help is-danger'>
+              {formErrors.name && <p className="help is-danger">
                 {formErrors.name}
               </p>}
             </div>
-            <div className='field'>
-              <label className='label'>Area</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label">Description*</label>
+              <div className="control">
                 <input 
-                  className={`input ${formErrors.area ? 
-                    'is-danger' : '' }`}
-                  placeholder='Area'
-                  name='area'
-                  onChange={handleChange}
-                  value={formData.area}
-                />
-              </div>
-              {formErrors.area && <p className='help is-danger'>
-                {formErrors.area}
-              </p>}
-            </div>
-            <div className='field'>
-              <label className='label'>Address</label>
-              <div className='control'>
-                <input 
-                  className={`input ${formErrors.address ? 
-                    'is-danger' : '' }`}
-                  placeholder='Address'
-                  name='address'
-                  onChange={handleChange}
-                  value={formData.address}
-                />
-              </div>
-              {formErrors.address && <p className='help is-danger'>
-                {formErrors.address}
-              </p>}
-            </div>
-            <div className='field'>
-              <label className='label'>Postcode</label>
-              <div className='control'>
-                <input 
-                  className={`input ${formErrors.postcode ? 
-                    'is-danger' : '' }`}
-                  placeholder='Postcode'
-                  name='postcode'
-                  onChange={handleChange}
-                  value={formData.postcode}
-                />
-              </div>
-              {formErrors.postcode && <p className='help is-danger'>
-                {formErrors.postcode}
-              </p>}
-            </div>
-            <div className='field'>
-              <label className='label'>Image</label>
-              <div className='control'>
-                <input 
-                  className={`input ${formErrors.image ? 
-                    'is-danger' : '' }`}
-                  placeholder='Image Url'
-                  name='image'
-                  onChange={handleChange}
-                  value={formData.image}
-                />
-              </div>
-              {formErrors.image && <p className='help is-danger'>
-                {formErrors.image}
-              </p>}
-            </div>
-            <div className='field'>
-              <label className='label'>Description</label>
-              <div className='control'>
-                <input 
-                  className={`input ${formErrors.description ? 
+                  className={`textarea input ${formErrors.description ? 
                     'is-danger' : '' }`}
                   placeholder='Description'
                   name='description'
@@ -149,29 +86,13 @@ function PlaceEdit() {
                   value={formData.description}
                 />
               </div>
-              {formErrors.description && <p className='help is-danger'>
+              {formErrors.description && <p className="help is-danger">
                 {formErrors.description}
               </p>}
             </div>
-            <div className='field'>
-              <label className='label'>Categories</label>
-              <div className='control'>
-                <input 
-                  className={`input ${formErrors.categories ? 
-                    'is-danger' : '' }`}
-                  placeholder='Categories ie. sports & leisure'
-                  name='categories'
-                  onChange={handleChange}
-                  value={formData.categories}
-                />
-              </div>
-              {formErrors.categories && <p className='help is-danger'>
-                {formErrors.categories}
-              </p>}
-            </div>
-            <div className='field'>
-              <label className='label'>Rating</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label">Rating*</label>
+              <div className="control">
                 <input 
                   className={`input ${formErrors.rating ? 
                     'is-danger' : '' }`}
@@ -181,48 +102,76 @@ function PlaceEdit() {
                   value={formData.rating}
                 />
               </div>
-              {formErrors.rating && <p className='help is-danger'>
+              {formErrors.rating && <p className="help is-danger">
                 {formErrors.rating}
               </p>}
             </div>
-            <div className='field'>
-              <label className='label'>Latitude</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label">Address*</label>
+              <div className="control">
                 <input 
-                  className={`input ${formErrors.lat ? 
+                  className={`input ${formErrors.address ? 
                     'is-danger' : '' }`}
-                  placeholder='Latitude'
-                  name='lat'
+                  placeholder='Address'
+                  name='address'
                   onChange={handleChange}
-                  type='number'
-                  step='any'
-                  value={formData.lat}
+                  value={formData.address}
                 />
               </div>
-              {formErrors.lat && <p className='help is-danger'>
-                {formErrors.lat}
+              {formErrors.address && <p className="help is-danger">
+                {formErrors.address}
               </p>}
             </div>
-            <div className='field'>
-              <label className='label'>Longitude</label>
-              <div className='control'>
+            <div className="field">
+              <label className="label">Postcode*</label>
+              <div className="control">
                 <input 
-                  className={`input ${formErrors.long ? 
+                  className={`input ${formErrors.postcode ? 
                     'is-danger' : '' }`}
-                  placeholder='Longitude'
-                  name='long'
+                  placeholder='Postcode'
+                  name='postcode'
                   onChange={handleChange}
-                  type='number'
-                  step='any'
-                  value={formData.long}
+                  value={formData.postcode}
                 />
               </div>
-              {formErrors.long && <p className='help is-danger'>
-                {formErrors.long}
+              {formErrors.postcode && <p className="help is-danger">
+                {formErrors.postcode}
               </p>}
             </div>
-            <div className='field'>
-              <button type='submit' className='button is-dark is-fullwidth'>
+            <div className="field">
+              <label className="label">Area*</label>
+              <div className="control">
+                <input 
+                  className={`input ${formErrors.area ? 
+                    'is-danger' : '' }`}
+                  placeholder='Area'
+                  name='area'
+                  onChange={handleChange}
+                  value={formData.area}
+                />
+              </div>
+              {formErrors.area && <p className="help is-danger">
+                {formErrors.area}
+              </p>}
+            </div>
+            <div className="field">
+              <label className="label">Image*</label>
+              <div className="control">
+                <input 
+                  className={`input ${formErrors.image ? 
+                    'is-danger' : '' }`}
+                  placeholder='Image Url'
+                  name='image'
+                  onChange={handleChange}
+                  value={formData.image}
+                />
+              </div>
+              {formErrors.image && <p className="help is-danger">
+                {formErrors.image}
+              </p>}
+            </div>
+            <div className="field">
+              <button type='submit' className="button is-dark is-fullwidth">
                 Edit Your Place!
               </button> 
             </div>

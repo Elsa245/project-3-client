@@ -4,8 +4,6 @@ import { useParams, useHistory } from 'react-router-dom'
 import  { useForm }  from '../../hooks/useForm'
 import { createReview, getSinglePlace } from '../../lib/api'
 
-
-
 function CreateNewReview() {
   const history = useHistory()
 
@@ -45,8 +43,6 @@ function CreateNewReview() {
       setFormErrors(error.response.data.message)
     }
   }
-  
-  
 
   return (
     <section className="section">

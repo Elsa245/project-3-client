@@ -17,7 +17,6 @@ function CreateNewReview() {
 
   const { placeId } = useParams()
 
-
   React.useEffect(() => {
     const getData = async () => {
       try {

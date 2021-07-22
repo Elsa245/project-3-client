@@ -1,14 +1,28 @@
 import axios from 'axios'
 
+import { baseUrl } from '../config'
 import { getToken } from './auth'
 
-const baseUrl = '/api'
+// const baseUrl = '/api'
+
 
 function headers() {
   return {
     headers: { Authorization: `Bearer ${getToken()}` },
   }
 }
+
+// ? Auth requests
+
+export function login(formData) {
+  return axios.post(`${baseUrl}/login`, formData)
+}
+
+export function register(formData) {
+  return axios.post(`${baseUrl}/register`, formData)
+}
+
+// ? Place requests
 
 export function getAllPlaces() {
   return axios.get(`${baseUrl}/places`)
@@ -34,6 +48,12 @@ export function deletePlace(id) {
   return axios.delete(`${baseUrl}/places/${id}`, headers())
 }
 
+export function getCordinates(pc) {
+  return axios.get(`http://api.postcodes.io/postcodes/${pc}`)
+}
+
+// ? Fav requests
+
 export function addFav(id){
   return axios.post(`${baseUrl}/favourites/${id}`, null,  headers())
 }
@@ -47,9 +67,8 @@ export function showMyFavs(){
   return axios.get(`${baseUrl}/favourites`, headers())
 }
 
-export function getCordinates(pc) {
-  return axios.get(`http://api.postcodes.io/postcodes/${pc}`)
-}
+
+// ? Review requests
 
 export function createReview(formData, placeId) {
   return axios.post(`${baseUrl}/places/${placeId}/review`, formData, headers())

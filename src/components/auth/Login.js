@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
+import { login } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 import { useForm } from '../../hooks/useForm'
 
@@ -18,7 +18,7 @@ function Login(){
     e.preventDefault()
   
     try {
-      const res = await axios.post('/api/login', formData)
+      const res = await login(formData)
       console.log(res)
       setToken(res.data.token)
       history.push('/places/map')

@@ -38,7 +38,6 @@ function Home() {
         setAllPlaces(res.data)
 
       } catch (err) {
-        {<p>Something went wrong!</p>}
         console.log(err)
       } finally {
         setLoading(false)

@@ -26,9 +26,9 @@ function CreateNewPlace() {
     e.preventDefault()
     const postCodeData = await getCordinates(formData.postcode)
     const postCodeResult = await postCodeData.data.result
-    console.log(postCodeResult.region)
-    console.log(postCodeResult.admin_district)
-    console.log(formData)
+    // console.log(postCodeResult.region)
+    // console.log(postCodeResult.admin_district)
+    // console.log(formData)
     try {
 
       const newFormData = {

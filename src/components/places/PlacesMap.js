@@ -3,6 +3,7 @@ import { useState } from 'react'
 import ReactMapGL, { Marker } from 'react-map-gl'
 import { Link } from 'react-router-dom'
 
+import { mapStyle, publicToken } from '../../config'
 import { getAllPlaces } from '../../lib/api'
 
 function Map() {
@@ -40,10 +41,8 @@ function Map() {
         width="100vw" 
         height="100vh"
         onViewportChange={nextViewport => setViewport(nextViewport)}
-        mapStyle='mapbox://styles/elsa24/ckpbnh5s2188u17mudjxkfwww'
-        mapboxApiAccessToken={
-          'pk.eyJ1IjoiZWxzYTI0IiwiYSI6ImNrcGJuaDJocjA5NTQycXJ0bDI0ZWJiZnoifQ.keu_rAoCALBw47nBeWBPKA'
-        }
+        mapStyle={mapStyle}
+        mapboxApiAccessToken={publicToken}
       >
         {places.map(place => (
           <div className="map" key={place._id}>

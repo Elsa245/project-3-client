@@ -11,7 +11,7 @@ function NavBar() {
 
   const handleToggle = () => {
     setIsOpen(!isOpen)
-    console.log('clicked')
+    // console.log('clicked')
   }
   const handleLogout = () =>{
     remove()
